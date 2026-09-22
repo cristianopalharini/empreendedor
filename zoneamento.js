@@ -1,5 +1,6 @@
 // Geometrias extraídas do mapa de zoneamento publicado pela Prefeitura de Ijuí.
-// O filtro indica zonas para análise; a autorização depende do Anexo 3 e da Prefeitura.
+// Atividades abaixo conferidas no Anexo 3 (páginas indicadas em cada registro).
+// O filtro indica zonas para análise; a autorização depende da Prefeitura.
 const zoneForm = document.getElementById('zone-filter');
 const zoneInput = document.getElementById('business-type');
 const zoneStatus = document.getElementById('zone-filter-status');
@@ -36,15 +37,28 @@ if (!window.L || !window.ZONEAMENTO_DATA) {
   const allBounds = polygons.getBounds();
   if (allBounds.isValid()) map.fitBounds(allBounds, { padding: [18, 18], maxZoom: 13 });
 
-  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-  const patterns = [
-    { name: 'indústria e fabricação', pattern: /industr|fabrica|fabrico|metalurg|marcenar|serralher|confeccao|usina/, zones: ['ZI1', 'ZI2'] },
-    { name: 'depósito e logística', pattern: /deposito|logistic|armazem|distribui|atacad|transportadora/, zones: ['ZI1', 'ZI2', 'ZC2', 'ZC3'] },
-    { name: 'prestação de serviços', pattern: /servic|escritorio|consultor|clinica|consultorio|salao|barbearia|oficina|academia|escola|lavanderia|pet shop/, zones: ['ZC1', 'ZC2', 'ZC3'] },
-    { name: 'comércio e alimentação', pattern: /comerc|loja|mercado|supermercado|padaria|restaurante|cafe|lanchonete|bar\b|farmacia|papelaria|varejo|boutique/, zones: ['ZC1', 'ZC2', 'ZC3'] }
+  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+  // A coluna conjunta do Anexo 3 aplica-se a ZC2, ZR3 e ZI1.
+  const basicZones = ['ZR1', 'ZR2', 'ZC1', 'ZC2', 'ZR3', 'ZI1'];
+  const activityRules = [
+    { name: 'Acupuntura', aliases: ['acupuntura'], zones: basicZones, page: 9 },
+    { name: 'Serviços advocatícios', aliases: ['advocacia', 'servicos advocaticios'], zones: basicZones, page: 9 },
+    { name: 'Clínica médica', aliases: ['clinica medica'], zones: basicZones, page: 10 },
+    { name: 'Clínica odontológica', aliases: ['clinica odontologica'], zones: basicZones, page: 10 },
+    { name: 'Consultoria e assessoria em geral', aliases: ['consultoria e assessoria em geral', 'consultoria e assessoria'], zones: basicZones, page: 10 },
+    { name: 'Contabilidade', aliases: ['contabilidade'], zones: basicZones, page: 10 },
+    { name: 'Açougue e casas de carne', aliases: ['acougue e casas de carne', 'acougue'], zones: basicZones, page: 15 },
+    { name: 'Farmácia com manipulação de fórmulas', aliases: ['farmacia com manipulacao de formulas', 'farmacia de manipulacao'], zones: basicZones, page: 17 },
+    { name: 'Hipermercado', aliases: ['hipermercado'], zones: ['ZC2', 'ZR3', 'ZI1', 'ZC3'], page: 17 },
+    { name: 'Armazéns e depósitos em geral', aliases: ['armazens e depositos em geral', 'depositos em geral', 'armazem e deposito em geral'], zones: ['ZC3'], page: 20 },
+    { name: 'Indústria de baixo potencial poluidor e área mínima', aliases: ['industria de baixo potencial poluidor e area minima'], zones: basicZones, page: 21 },
+    { name: 'Indústria de baixo potencial poluidor e área média', aliases: ['industria de baixo potencial poluidor e area media'], zones: ['ZC2', 'ZR3', 'ZI1', 'ZC3', 'ZI2'], page: 21 },
+    { name: 'Indústria de potencial baixo ou médio e área média ou grande', aliases: ['industria de potencial baixo ou medio e area media ou grande'], zones: ['ZC3', 'ZI2'], page: 21 },
+    { name: 'Indústria de potencial médio ou alto e área média ou grande', aliases: ['industria de potencial medio ou alto e area media ou grande'], zones: ['ZI2', 'ZI3'], page: 21 }
   ];
   function matchesZone(zone, wanted) {
-    return wanted.some(code => new RegExp(`(?:^|[^A-Z0-9])${code}(?:$|[^A-Z0-9])`).test(zone));
+    // Em áreas com mais de uma classificação, todas devem constar na linha da tabela.
+    return zone.split(/\s*\+\s*/).every(code => wanted.includes(code));
   }
   function resetMap() {
     polygons.eachLayer(layer => {
@@ -56,16 +70,16 @@ if (!window.L || !window.ZONEAMENTO_DATA) {
   zoneForm.addEventListener('submit', event => {
     event.preventDefault();
     const query = normalize(zoneInput.value);
-    const category = patterns.find(item => item.pattern.test(query));
-    if (!category) {
+    const activity = activityRules.find(item => item.aliases.includes(query));
+    if (!activity) {
       resetMap();
-      zoneStatus.textContent = 'Não identifiquei uma categoria para esse negócio. Tente descrever a atividade como comércio, serviço, indústria ou depósito e consulte a tabela oficial.';
+      zoneStatus.textContent = 'Não há correspondência exata para essa atividade nas opções verificadas do Anexo 3. Informe uma atividade mais específica ou consulte a tabela oficial e a Prefeitura.';
       return;
     }
     const selected = [];
     polygons.eachLayer(layer => {
       const zone = layer.feature.properties.zone;
-      const matched = matchesZone(zone, category.zones);
+      const matched = matchesZone(zone, activity.zones);
       const color = colorFor(zone);
       layer.setStyle({ color: matched ? '#097768' : '#748195', fillColor: matched ? '#12a891' : '#a9b3c0', weight: matched ? 2.5 : 1, fillOpacity: matched ? .6 : .08 });
       if (matched) selected.push(layer);
@@ -73,7 +87,7 @@ if (!window.L || !window.ZONEAMENTO_DATA) {
     if (selected.length) {
       map.fitBounds(L.featureGroup(selected).getBounds(), { padding: [22, 22], maxZoom: 14 });
       const names = [...new Set(selected.map(layer => layer.feature.properties.zone))].join(', ');
-      zoneStatus.textContent = `Para ${category.name}, destaquei ${selected.length} áreas nas zonas ${names}. São zonas para verificar, não uma confirmação de atividade permitida. Consulte o Anexo 3 e a Prefeitura.`;
+      zoneStatus.textContent = `${activity.name}: ${selected.length} áreas de referência nas zonas ${names}, conforme a linha da página ${activity.page} do Anexo 3. Confirme as condições e o imóvel com a Prefeitura.`;
     } else {
       zoneStatus.textContent = 'Nenhuma área correspondente foi encontrada neste mapa. Consulte a Prefeitura para orientação.';
     }
@@ -81,7 +95,7 @@ if (!window.L || !window.ZONEAMENTO_DATA) {
   clearZoneButton.addEventListener('click', () => {
     zoneInput.value = '';
     resetMap();
-    zoneStatus.textContent = 'Digite um tipo de negócio para ver as zonas de referência.';
+    zoneStatus.textContent = 'Escolha uma atividade da lista para ver as zonas de referência do Anexo 3.';
     zoneInput.focus();
   });
 }

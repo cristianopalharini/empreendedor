@@ -15,7 +15,7 @@ const services = {
     ['↩️','Restituição de DAS Duplicado','Solicite a restituição de pagamento duplicado.','https://www8.receita.fazenda.gov.br/SimplesNacional/Servicos/Grupo.aspx?grp=18'],
     ['❌','Feche seu MEI','Solicite a baixa do MEI.','https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/copy_of_servicos-para-mei/baixa-de-mei'],
     ['🧾','Nota Fiscal de Serviço (NFSe)','Acesse a emissão de NFSe para MEI.','https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/servicos-para-mei/nota-fiscal/nota-fiscal-de-servico-eletronica-nfs-e'],
-    ['📱','App MEI — Android','Aplicativo oficial do MEI.','https://play.google.com/store/apps/details?id=br.gov.fazenda.receita.mei']
+    ['📱','App MEI','Aplicativo oficial do MEI.','https://play.google.com/store/apps/details?id=br.gov.fazenda.receita.mei','https://apps.apple.com/br/app/mei/id1040521803']
   ],
   alvara: [
     ['🏢','Solicitar Alvará de Funcionamento','Licença para abertura ou alteração do estabelecimento.','https://www.ijui.rs.gov.br/pagina/10/alvara-de-funcionamento'],
@@ -76,14 +76,28 @@ function renderServices() {
     return button;
   }));
   grid.setAttribute('role','tabpanel'); grid.setAttribute('aria-labelledby',`tab-${active}`);
-  grid.replaceChildren(...services[active].map(([icon,title,desc,href]) => {
-    const link = document.createElement('a'); link.className = 'service-card'; link.href = href;
-    if (/^https?:/.test(href)) { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+  grid.replaceChildren(...services[active].map(([icon,title,desc,href,iosHref]) => {
+    const card = document.createElement(iosHref ? 'article' : 'a'); card.className = 'service-card';
+    if (!iosHref) {
+      card.href = href;
+      if (/^https?:/.test(href)) { card.target = '_blank'; card.rel = 'noopener noreferrer'; }
+    }
     const symbol = document.createElement('span'); symbol.className = 'icon'; symbol.textContent = icon;
     const heading = document.createElement('h3'); heading.textContent = title;
     const description = document.createElement('p'); description.textContent = desc;
-    const access = document.createElement('span'); access.className = 'access'; access.textContent = 'Acessar serviço →';
-    link.append(symbol, heading, description, access); return link;
+    card.append(symbol, heading, description);
+    if (iosHref) {
+      const links = document.createElement('div'); links.className = 'app-links';
+      for (const [label, url] of [['Android', href], ['iOS', iosHref]]) {
+        const link = document.createElement('a'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+        link.textContent = `${label} →`; links.append(link);
+      }
+      card.append(links);
+    } else {
+      const access = document.createElement('span'); access.className = 'access'; access.textContent = 'Acessar serviço →';
+      card.append(access);
+    }
+    return card;
   }));
 }
 renderServices();

@@ -1,11 +1,438 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Serviços, orientações e microcrédito para empreendedores de Ijuí."><title>Sala do Empreendedor — Prefeitura de Ijuí</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="zoneamento.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""><script src="site.js" defer></script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script><script src="zoneamento-data.js" defer></script><script src="zoneamento.js" defer></script></head>
-<body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="#inicio"><span class="brand-mark">SE</span><span><strong>Sala do Empreendedor</strong><small>Prefeitura de Ijuí — SEMDEC</small></span></a><nav id="main-nav" class="nav" aria-label="Navegação principal"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#microcredito">Microcrédito</a><a href="#zoneamento">Zoneamento</a><a href="#aprender">Aprender</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="button orange header-cta" href="#contato">Fale Conosco</a><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="main-nav" aria-expanded="false">☰</button></div></header>
-<main><section class="hero" id="inicio"><div class="container hero-grid"><div><p class="hours"><span>●</span> Atendimento: Seg a Sex — 8h30 às 11h30 e 13h30 às 17h</p><h1>Sala do<br><em>Empreendedor</em><small>Prefeitura de Ijuí</small></h1><p class="hero-description">Orientação gratuita, microcrédito, abertura de empresas, alvarás e muito mais — tudo num só lugar para o empreendedor ijuiense.</p><div class="actions"><a class="button orange" href="#servicos">Ver Serviços</a><a class="button outline" href="#contato">Agendar Atendimento</a></div></div><div class="quick-grid"><a href="#servicos"><span>📱</span><strong>Serviços Digitais</strong><small>Resolva com agilidade</small></a><a href="#sobre"><span>🤝</span><strong>Orientações</strong><small>Suporte especializado</small></a><a href="#microcredito"><span>💰</span><strong>Microcrédito</strong><small>Para o seu negócio</small></a><a href="#servicos" data-category="licitacoes"><span>🏛️</span><strong>Licitações</strong><small>Seja fornecedor da Prefeitura</small></a></div></div><svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 48V16C240 0 480 48 720 32C960 16 1200 0 1440 16V48H0Z"/></svg></section>
-<section class="section services" id="servicos"><div class="container"><div class="section-heading"><span class="eyebrow">Portal de Serviços</span><h2>Serviços digitais e presenciais</h2><p>Selecione uma categoria e acesse os serviços disponíveis para empreendedores de Ijuí.</p></div><div class="tabs" role="tablist" aria-label="Categorias de serviços"></div><div class="service-grid" id="service-grid" aria-live="polite"></div></div></section>
-<aside class="in-person"><div class="container in-person-grid"><div><span class="seal">💎 Selo Diamante Sebrae</span><h2>Atendimento Presencial</h2><p>Rua 15 de Novembro, 593, 3º andar — Centro, Ijuí-RS</p></div><div class="chips"><span>✅ Formalização do MEI</span><span>🖨️ Emissão de DAS</span><span>📊 Declaração Anual</span><span>⚖️ Orientação Jurídica</span><span>💻 Coworking</span><span>💰 Microcrédito</span><span>📋 Suporte para Licenças</span><span>🏛️ Junta Comercial</span></div></div></aside>
-<section class="section zoning-section" id="zoneamento"><div class="container"><div class="section-heading"><span class="eyebrow">Planeje seu negócio</span><h2>Mapa de zoneamento de Ijuí</h2><p>Digite o tipo de negócio para destacar zonas que merecem consulta no mapa. A indicação não substitui a análise do município.</p></div><form class="zone-filter" id="zone-filter"><label for="business-type">Tipo de negócio</label><div class="zone-filter-row"><input id="business-type" name="business-type" type="search" list="business-examples" placeholder="Ex.: loja, restaurante, escritório, indústria" autocomplete="off" required><button class="button orange" type="submit">Buscar áreas</button><button class="button map-secondary" type="button" id="clear-zone-filter">Limpar</button></div><datalist id="business-examples"><option value="Loja"><option value="Restaurante"><option value="Escritório"><option value="Clínica"><option value="Indústria"><option value="Depósito"></datalist><p class="zone-filter-status" id="zone-filter-status" role="status" aria-live="polite">Digite um tipo de negócio para ver as zonas de referência.</p></form><div class="zone-legend" aria-label="Legenda do mapa"><span><i class="zone-key residential"></i> Residencial</span><span><i class="zone-key commercial"></i> Comercial ou mista</span><span><i class="zone-key industrial"></i> Industrial</span><small>Arraste para navegar. Passe o cursor ou toque em uma área para ver a zona.</small></div><div class="map-frame"><div id="zoning-map" role="img" aria-label="Mapa interativo de zoneamento de Ijuí">Carregando mapa de zoneamento…</div></div><div class="map-actions"><a class="button orange" href="https://www.google.com/maps/d/viewer?mid=1ki7e4q0CeL2bRKgsw1jL5NkKJQgFFTo" target="_blank" rel="noopener noreferrer">Abrir mapa completo ↗</a><a class="button map-secondary" href="https://www.ijui.rs.gov.br/pagina/40" target="_blank" rel="noopener noreferrer">Página oficial do zoneamento ↗</a><a class="button map-secondary" href="anexos-zoneamento.pdf" target="_blank" rel="noopener noreferrer">Tabela de atividades (Anexo 3) ↗</a></div><p class="map-note">Os polígonos foram extraídos do mapa divulgado pela Prefeitura, com dados consolidados até dezembro de 2022. A indicação por atividade é preliminar e não comprova que um imóvel pode receber o negócio. Para confirmar o zoneamento e as regras aplicáveis ao imóvel, consulte a Secretaria Municipal de Planejamento: <a href="tel:+555533318200">(55) 3331-8200</a>.</p></div></section><section class="section" id="microcredito"><div class="container two-column"><div><span class="eyebrow orange-text">Microcrédito</span><h2>Crédito para o seu negócio crescer</h2><p>A Sala do Empreendedor de Ijuí oferece acesso ao microcrédito em parceria com a <strong>Imembuí Microfinanças</strong>. Agende uma consulta gratuita com a agente de crédito e descubra as opções para o seu negócio.</p><div class="credit-contact"><strong>📞 Agente de Crédito — Agende seu atendimento</strong><p><b>Naiara Bresolin</b> · Imembuí Microfinanças</p><a href="tel:+5555981060010">📱 (55) 98106-0010</a><a href="mailto:naiarabresolin@imembuimicrofinancas.org">📧 naiarabresolin@imembuimicrofinancas.org</a></div><a class="button orange" href="https://wa.me/5555981060010" target="_blank" rel="noopener noreferrer">Enviar mensagem no WhatsApp →</a></div><div class="feature-stack"><article><span>💰</span><div><h3>Microcrédito Produtivo</h3><p>Linhas de crédito para capital de giro, equipamentos e expansão.</p></div></article><article><span>🤝</span><div><h3>Consultoria Gratuita</h3><p>Orientação sobre a opção mais adequada para sua necessidade.</p></div></article><article><span>⚡</span><div><h3>Processo Simplificado</h3><p>Análise personalizada para microempreendedores.</p></div></article><article><span>📈</span><div><h3>Suporte ao Crescimento</h3><p>Acompanhamento para você planejar o investimento.</p></div></article></div></div></section>
-<section class="section dark-section" id="aprender"><div class="container"><div class="section-heading"><span class="eyebrow">Conhecimento</span><h2>Informações &amp; Cursos</h2><p>Acesse recursos educativos gratuitos e capacitações em parceria com o Sebrae.</p></div><div class="learn-grid"><a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" rel="noopener noreferrer"><span>📚</span><h3>Tudo sobre o MEI</h3><p>Informações para abrir e gerir o seu negócio.</p><b>Acessar →</b></a><a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei" target="_blank" rel="noopener noreferrer"><span>🎥</span><h3>Formalização do MEI</h3><p>Conheça os passos para se formalizar.</p><b>Acessar →</b></a><a href="https://www.gov.br/nfse/pt-br/mei/links-com-passo-a-passo" target="_blank" rel="noopener noreferrer"><span>📄</span><h3>Tutoriais em PDF</h3><p>Orientações práticas para serviços do MEI.</p><b>Acessar →</b></a><a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" rel="noopener noreferrer"><span>🌐</span><h3>Portal do Empreendedor</h3><p>Serviços do governo federal.</p><b>Acessar →</b></a><a href="https://sebrae.com.br/sites/PortalSebrae/cursosonline" target="_blank" rel="noopener noreferrer"><span>🎓</span><h3>Cursos Gratuitos do Sebrae</h3><p>Capacitações para quem empreende.</p><b>Acessar →</b></a><a href="https://sebrae.com.br" target="_blank" rel="noopener noreferrer"><span>📈</span><h3>Plano de Negócios</h3><p>Planeje o crescimento da sua empresa.</p><b>Acessar →</b></a></div></div></section>
-<section class="section" id="sobre"><div class="container two-column"><div><span class="eyebrow">Sobre nós</span><h2>Um espaço público dedicado ao empreendedor ijuiense</h2><p>A Sala do Empreendedor é uma iniciativa da <strong>Secretaria Municipal de Desenvolvimento Econômico (SEMDEC)</strong> da Prefeitura de Ijuí. O espaço facilita o acesso a serviços, orientações e recursos gratuitos.</p><p>Com o <strong>Selo Diamante do Sebrae</strong>, reúne apoio para abertura de empresas, regularização, crédito e capacitação.</p><div class="partner-grid"><span>🤝 Parceiro Sebrae</span><span>🏛️ Prefeitura de Ijuí</span><span>💳 Imembuí Microfinanças</span><span>🏢 Junta Comercial</span></div></div><div class="feature-stack"><article><span>✓</span><div><h3>Atendimento gratuito</h3><p>Orientação e apoio ao cidadão sem custo.</p></div></article><article><span>✓</span><div><h3>Equipe qualificada</h3><p>Atendimento focado no pequeno negócio.</p></div></article><article><span>★</span><div><h3>Acesso a microcrédito</h3><p>Parceria com a Imembuí Microfinanças.</p></div></article><article><span>★</span><div><h3>Coworking disponível</h3><p>Espaço compartilhado para empreendedores.</p></div></article></div></div></section>
-<section class="section contact-section" id="contato"><div class="container"><div class="section-heading"><span class="eyebrow">Contato</span><h2>Entre em contato</h2><p>Dúvidas ou outros assuntos? Nossa equipe está pronta para atender você.</p></div><div class="contact-grid"><article><span>📍</span><h3>Endereço</h3><p>Rua 15 de Novembro, 593<br>3º andar — Centro, Ijuí-RS</p></article><article><span>🕐</span><h3>Horário de Atendimento</h3><p>Seg a Sex<br>8h30–11h30 / 13h30–17h</p></article><article><span>📞</span><h3>Telefone</h3><p><a href="tel:+555533318255">(55) 3331-8255</a><br>WhatsApp: (55) 3331-8200<br>Opção 11 — Empresas</p></article><article><span>✉️</span><h3>E-mail</h3><p><a href="mailto:mei.ijui@ijui.rs.gov.br">mei.ijui@ijui.rs.gov.br</a></p></article></div><div class="whatsapp-banner"><div><h3>Fale pelo WhatsApp</h3><p>Entre em contato com a equipe da Sala do Empreendedor.</p></div><a class="button white" href="https://wa.me/555533318200" target="_blank" rel="noopener noreferrer">Fale Conosco no WhatsApp →</a></div></div></section></main>
-<footer><div class="container footer-wrap"><a class="brand" href="#inicio"><span class="brand-mark">SE</span><span><strong>Sala do Empreendedor — Ijuí</strong><small>Município de Ijuí — Poder Executivo / SEMDEC</small></span></a><nav aria-label="Navegação do rodapé"><a href="#inicio">Início</a><a href="#servicos">Serviços</a><a href="#microcredito">Microcrédito</a><a href="#zoneamento">Zoneamento</a><a href="#aprender">Aprender</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav></div></footer><a class="back-top" href="#inicio" aria-label="Voltar ao topo">↑</a></body></html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Serviços, orientações e microcrédito para empreendedores de Ijuí.">
+    <title>Sala do Empreendedor — Prefeitura de Ijuí</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="zoneamento.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="site.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="zoneamento-data.js" defer></script>
+    <script src="zoneamento.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/PMILogo202103.png" alt=""></span>
+        <span><strong>Sala do Empreendedor</strong><small>Prefeitura de Ijuí — SEMDEC</small></span></a>
+        <nav id="main-nav" class="nav" aria-label="Navegação principal">
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#microcredito">Microcrédito</a>
+          <a href="#zoneamento">Zoneamento</a>
+          <a href="#aprender">Aprender</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <a class="button orange header-cta" href="#contato">Fale Conosco</a><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="main-nav" aria-expanded="false">☰</button>
+      </div>
+    </header>
+    <main>
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div>
+            <p class="hours">
+              <span>●</span> Atendimento: Seg a Sex — 8h30 às 11h30 e 13h30 às 17h
+            </p>
+            <h1>
+              Sala do<br><em>Empreendedor</em><small>Prefeitura de Ijuí</small>
+            </h1>
+            <p class="hero-description">
+              Orientação gratuita, microcrédito, abertura de empresas, alvarás e muito mais — tudo num só lugar para o empreendedor ijuiense.
+            </p>
+            <div class="actions">
+              <a class="button orange" href="#servicos">Ver Serviços</a>
+              <a class="button outline" href="#contato">Agendar Atendimento</a>
+            </div>
+          </div>
+          <div class="quick-grid">
+            <a href="#servicos"><span>📱</span><strong>Serviços Digitais</strong><small>Resolva com agilidade</small></a>
+            <a href="#sobre"><span>🤝</span><strong>Orientações</strong><small>Suporte especializado</small></a>
+            <a href="#microcredito"><span>💰</span><strong>Microcrédito</strong><small>Para o seu negócio</small></a>
+            <a href="#servicos" data-category="licitacoes"><span>🏛️</span><strong>Licitações</strong><small>Seja fornecedor da Prefeitura</small></a>
+          </div>
+        </div>
+        <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 48V16C240 0 480 48 720 32C960 16 1200 0 1440 16V48H0Z"/></svg>
+      </section>
+      <section class="section services" id="servicos">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Portal de Serviços</span>
+            <h2>
+              Serviços digitais e presenciais
+            </h2>
+            <p>
+              Selecione uma categoria e acesse os serviços disponíveis para empreendedores de Ijuí.
+            </p>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Categorias de serviços">
+          </div>
+          <div class="service-grid" id="service-grid" aria-live="polite">
+          </div>
+        </div>
+      </section>
+      <aside class="in-person">
+        <div class="container in-person-grid">
+          <div>
+            <span class="seal">💎 Selo Diamante Sebrae</span>
+            <h2>
+              Atendimento Presencial
+            </h2>
+            <p>
+              Rua 15 de Novembro, 593, 3º andar — Centro, Ijuí-RS
+            </p>
+          </div>
+          <div class="chips">
+            <span>✅ Formalização do MEI</span>
+            <span>🖨️ Emissão de DAS</span>
+            <span>📊 Declaração Anual</span>
+            <span>⚖️ Orientação Jurídica</span>
+            <span>💻 Coworking</span>
+            <span>💰 Microcrédito</span>
+            <span>📋 Suporte para Licenças</span>
+            <span>🏛️ Junta Comercial</span>
+          </div>
+        </div>
+      </aside>
+      <section class="section zoning-section" id="zoneamento">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Planeje seu negócio</span>
+            <h2>
+              Mapa de zoneamento de Ijuí
+            </h2>
+            <p>
+              Pesquise uma atividade específica do Anexo 3 para destacar areas onde sua empresa pode atuar. A indicação não substitui a análise do município.
+            </p>
+          </div>
+          <form class="zone-filter" id="zone-filter">
+            <label for="business-type">Atividade conforme o Anexo 3</label>
+            <div class="zone-filter-row">
+              <input id="business-type" name="business-type" type="search" list="business-examples" placeholder="Ex.: clínica médica, contabilidade, hipermercado" autocomplete="off" required><button class="button orange" type="submit">Buscar áreas</button><button class="button map-secondary" type="button" id="clear-zone-filter">Limpar</button>
+            </div>
+            <datalist id="business-examples">
+              <option value="Acupuntura">
+              <option value="Advocacia">
+              <option value="Clínica médica">
+              <option value="Clínica odontológica">
+              <option value="Consultoria e assessoria">
+              <option value="Contabilidade">
+              <option value="Açougue">
+              <option value="Farmácia de manipulação">
+              <option value="Hipermercado">
+              <option value="Armazéns e depósitos em geral">
+              <option value="Indústria de baixo potencial poluidor e área mínima">
+              <option value="Indústria de baixo potencial poluidor e área média">
+              <option value="Indústria de potencial baixo ou médio e área média ou grande">
+              <option value="Indústria de potencial médio ou alto e área média ou grande">
+            </datalist>
+            <p class="zone-filter-status" id="zone-filter-status" role="status" aria-live="polite">
+              Escolha uma atividade da lista para ver as zonas de referência do Anexo 3.
+            </p>
+          </form>
+          <div class="zone-legend" aria-label="Legenda do mapa">
+            <span><i class="zone-key residential"></i> Residencial</span>
+            <span><i class="zone-key commercial"></i> Comercial ou mista</span>
+            <span><i class="zone-key industrial"></i> Industrial</span><small>Arraste para navegar. Passe o cursor ou toque em uma área para ver a zona.</small>
+          </div>
+          <div class="map-frame">
+            <div id="zoning-map" role="img" aria-label="Mapa interativo de zoneamento de Ijuí">
+              Carregando mapa de zoneamento…
+            </div>
+          </div>
+          <div class="map-actions">
+            <a class="button orange" href="https://www.google.com/maps/d/viewer?mid=1ki7e4q0CeL2bRKgsw1jL5NkKJQgFFTo" target="_blank" rel="noopener noreferrer">Abrir mapa completo ↗</a>
+            <a class="button map-secondary" href="https://www.ijui.rs.gov.br/pagina/40" target="_blank" rel="noopener noreferrer">Página oficial do zoneamento ↗</a>
+            <a class="button map-secondary" href="anexos-zoneamento.pdf" target="_blank" rel="noopener noreferrer">Tabela de atividades (Anexo 3) ↗</a>
+          </div>
+          <p class="map-note">
+            Os polígonos foram extraídos do mapa divulgado pela Prefeitura, com dados consolidados até dezembro de 2022. A indicação por atividade é preliminar e não comprova que um imóvel pode receber o negócio. Para confirmar o zoneamento e as regras aplicáveis ao imóvel, consulte a Secretaria Municipal de Planejamento: <a href="tel:+555533318200">(55) 3331-8200</a>.
+          </p>
+        </div>
+      </section>
+      <section class="section" id="microcredito">
+        <div class="container two-column">
+          <div>
+            <span class="eyebrow orange-text">Microcrédito</span>
+            <h2>
+              Crédito para o seu negócio crescer
+            </h2>
+            <p>
+              A Sala do Empreendedor de Ijuí oferece acesso ao microcrédito em parceria com a <strong>Imembuí Microfinanças</strong>. Agende uma consulta gratuita com a agente de crédito e descubra as opções para o seu negócio.
+            </p>
+            <div class="credit-contact">
+              <strong>📞 Agente de Crédito — Agende seu atendimento</strong>
+              <p>
+                <b>Naiara Bresolin</b> · Imembuí Microfinanças
+              </p>
+              <a href="tel:+5555981060010">📱 (55) 98106-0010</a>
+              <a href="mailto:naiarabresolin@imembuimicrofinancas.org">📧 naiarabresolin@imembuimicrofinancas.org</a>
+            </div>
+            <a class="button orange" href="https://wa.me/5555981060010" target="_blank" rel="noopener noreferrer">Enviar mensagem no WhatsApp →</a>
+          </div>
+          <div class="feature-stack">
+            <article>
+              <span>💰</span>
+              <div>
+                <h3>
+                  Microcrédito Produtivo
+                </h3>
+                <p>
+                  Linhas de crédito para capital de giro, equipamentos e expansão.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>🤝</span>
+              <div>
+                <h3>
+                  Consultoria Gratuita
+                </h3>
+                <p>
+                  Orientação sobre a opção mais adequada para sua necessidade.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>⚡</span>
+              <div>
+                <h3>
+                  Processo Simplificado
+                </h3>
+                <p>
+                  Análise personalizada para microempreendedores.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>📈</span>
+              <div>
+                <h3>
+                  Suporte ao Crescimento
+                </h3>
+                <p>
+                  Acompanhamento para você planejar o investimento.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section dark-section" id="aprender">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Conhecimento</span>
+            <h2>
+              Informações &amp; Cursos
+            </h2>
+            <p>
+              Acesse recursos educativos gratuitos e capacitações em parceria com o Sebrae.
+            </p>
+          </div>
+          <div class="learn-grid">
+            <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" rel="noopener noreferrer"><span>📚</span>
+            <h3>
+              Tudo sobre o MEI
+            </h3>
+            <p>
+              Informações para abrir e gerir o seu negócio.
+            </p>
+            <b>Acessar →</b></a>
+            <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/quero-ser-mei" target="_blank" rel="noopener noreferrer"><span>🎥</span>
+            <h3>
+              Formalização do MEI
+            </h3>
+            <p>
+              Conheça os passos para se formalizar.
+            </p>
+            <b>Acessar →</b></a>
+            <a href="https://www.gov.br/nfse/pt-br/mei/links-com-passo-a-passo" target="_blank" rel="noopener noreferrer"><span>📄</span>
+            <h3>
+              Tutoriais em PDF
+            </h3>
+            <p>
+              Orientações práticas para serviços do MEI.
+            </p>
+            <b>Acessar →</b></a>
+            <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor" target="_blank" rel="noopener noreferrer"><span>🌐</span>
+            <h3>
+              Portal do Empreendedor
+            </h3>
+            <p>
+              Serviços do governo federal.
+            </p>
+            <b>Acessar →</b></a>
+            <a href="https://sebrae.com.br/sites/PortalSebrae/cursosonline" target="_blank" rel="noopener noreferrer"><span>🎓</span>
+            <h3>
+              Cursos Gratuitos do Sebrae
+            </h3>
+            <p>
+              Capacitações para quem empreende.
+            </p>
+            <b>Acessar →</b></a>
+            <a href="https://sebrae.com.br" target="_blank" rel="noopener noreferrer"><span>📈</span>
+            <h3>
+              Plano de Negócios
+            </h3>
+            <p>
+              Planeje o crescimento da sua empresa.
+            </p>
+            <b>Acessar →</b></a>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="sobre">
+        <div class="container two-column">
+          <div>
+            <span class="eyebrow">Sobre nós</span>
+            <h2>
+              Um espaço público dedicado ao empreendedor ijuiense
+            </h2>
+            <p>
+              A Sala do Empreendedor é uma iniciativa da <strong>Secretaria Municipal de Desenvolvimento Econômico (SEMDEC)</strong> da Prefeitura de Ijuí. O espaço facilita o acesso a serviços, orientações e recursos gratuitos.
+            </p>
+            <p>
+              Com o <strong>Selo Diamante do Sebrae</strong>, reúne apoio para abertura de empresas, regularização, crédito e capacitação.
+            </p>
+            <div class="partner-grid">
+              <span>🤝 Parceiro Sebrae</span>
+              <span>🏛️ Prefeitura de Ijuí</span>
+              <span>💳 Imembuí Microfinanças</span>
+              <span>🏢 Junta Comercial</span>
+            </div>
+          </div>
+          <div class="feature-stack">
+            <article>
+              <span>✓</span>
+              <div>
+                <h3>
+                  Atendimento gratuito
+                </h3>
+                <p>
+                  Orientação e apoio ao cidadão sem custo.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>✓</span>
+              <div>
+                <h3>
+                  Equipe qualificada
+                </h3>
+                <p>
+                  Atendimento focado no pequeno negócio.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>★</span>
+              <div>
+                <h3>
+                  Acesso a microcrédito
+                </h3>
+                <p>
+                  Parceria com a Imembuí Microfinanças.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>★</span>
+              <div>
+                <h3>
+                  Coworking disponível
+                </h3>
+                <p>
+                  Espaço compartilhado para empreendedores.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section contact-section" id="contato">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Contato</span>
+            <h2>
+              Entre em contato
+            </h2>
+            <p>
+              Dúvidas ou outros assuntos? Nossa equipe está pronta para atender você.
+            </p>
+          </div>
+          <div class="contact-grid">
+            <article>
+              <span>📍</span>
+              <h3>
+                Endereço
+              </h3>
+              <p>
+                Rua 15 de Novembro, 593<br>3º andar — Centro, Ijuí-RS
+              </p>
+            </article>
+            <article>
+              <span>🕐</span>
+              <h3>
+                Horário de Atendimento
+              </h3>
+              <p>
+                Seg a Sex<br>8h30–11h30 / 13h30–17h
+              </p>
+            </article>
+            <article>
+              <span>📞</span>
+              <h3>
+                Telefone
+              </h3>
+              <p>
+                <a href="tel:+555533318255">(55) 3331-8255</a><br>WhatsApp: (55) 3331-8200<br>Opção 11 — Empresas
+              </p>
+            </article>
+            <article>
+              <span>✉️</span>
+              <h3>
+                E-mail
+              </h3>
+              <p>
+                <a href="mailto:mei.ijui@ijui.rs.gov.br">mei.ijui@ijui.rs.gov.br</a>
+              </p>
+            </article>
+          </div>
+          <div class="whatsapp-banner">
+            <div>
+              <h3>
+                Fale pelo WhatsApp
+              </h3>
+              <p>
+                Entre em contato com a equipe da Sala do Empreendedor.
+              </p>
+            </div>
+            <a class="button white" href="https://wa.me/555533318200" target="_blank" rel="noopener noreferrer">Fale Conosco no WhatsApp →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-wrap">
+        <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/PMILogo202103.png" alt=""></span>
+        <span><strong>Sala do Empreendedor — Ijuí</strong><small>Município de Ijuí — Poder Executivo / SEMDEC</small></span></a>
+        <nav aria-label="Navegação do rodapé">
+          <a href="#inicio">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#microcredito">Microcrédito</a>
+          <a href="#zoneamento">Zoneamento</a>
+          <a href="#aprender">Aprender</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+    </footer>
+    <a class="back-top" href="#inicio" aria-label="Voltar ao topo">↑</a>
+  </body>
+</html>
