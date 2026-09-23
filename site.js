@@ -58,7 +58,7 @@ const services = {
   vigilancia: [
     ['🌿','Licenciamento Ambiental','Acesse o portal ambiental.','http://meioambiente.govbr.com.br:3050/rcl5/indexme.aspx?1680'],
     ['🏥','Alvará Sanitário','Solicite o alvará sanitário.','https://ijui.1doc.com.br/b.php?pg=wp/wp&itd=5&is=1508'],
-    ['🗺️','Mapa de Zoneamento','Consulte as zonas urbanas de Ijuí no mapa.','#zoneamento']
+    ['🗺️','Plano Diretor e Zoneamento','Consulte a lei, a tabela de atividades e o mapa de zoneamento.','#zoneamento']
   ]
 };
 
