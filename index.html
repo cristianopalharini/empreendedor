@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="zoneamento.css">
+    <link rel="stylesheet" href="qualifica.css">
     <script src="site.js" defer></script>
+    <script src="qualifica.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -130,6 +132,168 @@
           <p class="map-note">
             Para confirmar as regras aplicáveis ao imóvel e à atividade, consulte a Secretaria Municipal de Planejamento: <a href="tel:+555533318200">(55) 3331-8200</a>. A consulta aos documentos orienta o planejamento e não substitui a análise e as autorizações do município.
           </p>
+        </div>
+      </section>
+      <section class="section qualifica-section" id="qualifica" aria-labelledby="qualifica-title">
+        <div class="container">
+          <div class="qualifica-heading">
+            <div>
+              <h2 id="qualifica-title">Qualifica<span>+</span> Ijuí</h2>
+              <p>Programa da Prefeitura de Ijuí com cursos de capacitação profissional <strong>100% gratuitos</strong>, em parceria com SENAC e SENAI. O primeiro programa gaúcho do tipo — e finalista nacional de inovação municipal.</p>
+            </div>
+            <a class="button qualifica-instagram" href="https://www.instagram.com/qualifica_ijui/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📸</span> @qualificaijui</a>
+          </div>
+          <dl class="qualifica-stats">
+            <div><dt>pessoas qualificadas</dt><dd>+1.600</dd></div>
+            <div><dt>investidos pelo poder público</dt><dd>+R$ 800mil</dd></div>
+            <div><dt>cursos em diversas áreas</dt><dd>+150</dd></div>
+          </dl>
+          <div class="qualifica-highlight">
+            <div>
+              <span class="qualifica-pioneer">Pioneirismo no Rio Grande do Sul</span>
+              <h3>O primeiro programa gaúcho do tipo</h3>
+              <p>Ijuí foi a <strong>primeira cidade do Rio Grande do Sul</strong> a oferecer um programa municipal de cursos profissionalizantes 100% gratuitos — uma iniciativa que virou referência para outros municípios gaúchos.</p>
+            </div>
+            <span class="qualifica-first" aria-hidden="true">1º<small>no RS</small></span>
+          </div>
+          <ul class="qualifica-benefits" aria-label="Benefícios do programa">
+            <li>Curso 100% gratuito</li>
+            <li>Certificado reconhecido</li>
+            <li>Professores qualificados</li>
+            <li>Formação voltada ao mercado</li>
+            <li>Mais oportunidades de emprego</li>
+            <li>Incentivo ao empreendedorismo</li>
+          </ul>
+          <div class="qualifica-gallery">
+            <div class="qualifica-carousel" role="region" aria-roledescription="carrossel" aria-labelledby="qualifica-courses-title">
+              <div class="qualifica-carousel-heading">
+                <div>
+                  <h3 id="qualifica-courses-title">Cursos concluídos</h3>
+                  <p>Conheça as turmas que já fizeram parte do Qualifica+ Ijuí.</p>
+                </div>
+                <div class="qualifica-carousel-controls">
+                  <button type="button" id="qualifica-prev" aria-label="Curso anterior" aria-controls="qualifica-completed" disabled>↑</button>
+                  <button type="button" id="qualifica-next" aria-label="Próximo curso" aria-controls="qualifica-completed" disabled>↓</button>
+                </div>
+              </div>
+              <!-- Adicione os cursos e as fotos na lista cursosConcluidos em qualifica.js. -->
+              <div class="qualifica-carousel-viewport" id="qualifica-completed" tabindex="0" aria-label="Cursos concluídos; use as setas para cima e para baixo para navegar">
+                <div class="qualifica-carousel-empty">
+                  <span aria-hidden="true">🎓</span>
+                  <h4>Novas conquistas para compartilhar</h4>
+                  <p>Em breve, os registros das turmas concluídas estarão aqui.</p>
+                </div>
+              </div>
+              <p class="qualifica-carousel-position" id="qualifica-position" role="status" aria-live="polite" aria-atomic="true"></p>
+            </div>
+            <div class="qualifica-team" role="region" aria-labelledby="qualifica-team-title">
+              <div class="qualifica-team-heading">
+                <h3 id="qualifica-team-title">Equipe responsável</h3>
+                <p>Quem faz o Qualifica+ Ijuí acontecer.</p>
+              </div>
+              <div class="qualifica-team-photos" tabindex="0" role="group" aria-label="Fotos da equipe; role para ver mais e selecione uma foto para ampliar">
+                <!-- Para adicionar fotos da equipe, copie um dos blocos figure abaixo. -->
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Equipe reunida para troca de ideias.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Equipe reunida para troca de ideias (nova aba)">
+                    <img src="images/EquipeQualifica/Equipe reunida para troca de ideias.jpg" alt="Equipe reunida para troca de ideias" loading="lazy">
+                  </a>
+                  <figcaption>Equipe reunida para troca de ideias</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Alinhamentos com Senac ijui.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Alinhamentos com o SENAC Ijuí (nova aba)">
+                    <img src="images/EquipeQualifica/Alinhamentos com Senac ijui.jpg" alt="Alinhamentos com o SENAC Ijuí" loading="lazy">
+                  </a>
+                  <figcaption>Alinhamentos com o SENAC Ijuí</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Entrega relatório qualifica +.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Entrega do relatório Qualifica+ (nova aba)">
+                    <img src="images/EquipeQualifica/Entrega relatório qualifica +.jpg" alt="Entrega do relatório Qualifica+" loading="lazy">
+                  </a>
+                  <figcaption>Entrega do relatório Qualifica+</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/reuniao SMDS + CRAS.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Reunião com SMDS e CRAS (nova aba)">
+                    <img src="images/EquipeQualifica/reuniao SMDS + CRAS.jpg" alt="Reunião com SMDS e CRAS" loading="lazy">
+                  </a>
+                  <figcaption>Reunião com SMDS e CRAS</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Senai panambi (1).jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Reunião no SENAI Panambi (nova aba)">
+                    <img src="images/EquipeQualifica/Senai panambi (1).jpeg" alt="Reunião no SENAI Panambi" loading="lazy">
+                  </a>
+                  <figcaption>Reunião no SENAI Panambi</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Senai panambi (2).jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Visita às oficinas do SENAI Panambi (nova aba)">
+                    <img src="images/EquipeQualifica/Senai panambi (2).jpeg" alt="Visita às oficinas do SENAI Panambi" loading="lazy">
+                  </a>
+                  <figcaption>Visita às oficinas do SENAI Panambi</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Senai panambi (3).jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Conhecendo os equipamentos do SENAI Panambi (nova aba)">
+                    <img src="images/EquipeQualifica/Senai panambi (3).jpeg" alt="Conhecendo os equipamentos do SENAI Panambi" loading="lazy">
+                  </a>
+                  <figcaption>Conhecendo os equipamentos do SENAI Panambi</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Senai panambi (4).jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Visita ao laboratório do SENAI Panambi (nova aba)">
+                    <img src="images/EquipeQualifica/Senai panambi (4).jpeg" alt="Visita ao laboratório do SENAI Panambi" loading="lazy">
+                  </a>
+                  <figcaption>Visita ao laboratório do SENAI Panambi</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Senai panambi (5).jpeg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Atividades no SENAI Panambi (nova aba)">
+                    <img src="images/EquipeQualifica/Senai panambi (5).jpeg" alt="Atividades no SENAI Panambi" loading="lazy">
+                  </a>
+                  <figcaption>Atividades no SENAI Panambi</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Sest Senat Ijuí.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Encontro no SEST SENAT Ijuí (nova aba)">
+                    <img src="images/EquipeQualifica/Sest Senat Ijuí.jpg" alt="Encontro no SEST SENAT Ijuí" loading="lazy">
+                  </a>
+                  <figcaption>Encontro no SEST SENAT Ijuí</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/tratativas senac.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Tratativas com o SENAC (nova aba)">
+                    <img src="images/EquipeQualifica/tratativas senac.jpg" alt="Tratativas com o SENAC" loading="lazy">
+                  </a>
+                  <figcaption>Tratativas com o SENAC</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/visita a Escola Técnica Estadual 25 de Julho.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Visita à Escola Técnica Estadual 25 de Julho (nova aba)">
+                    <img src="images/EquipeQualifica/visita a Escola Técnica Estadual 25 de Julho.jpg" alt="Visita à Escola Técnica Estadual 25 de Julho" loading="lazy">
+                  </a>
+                  <figcaption>Visita à Escola Técnica Estadual 25 de Julho</figcaption>
+                </figure>
+                <figure class="qualifica-team-photo">
+                  <a href="images/EquipeQualifica/Visita Senai panambi.jpg" target="_blank" rel="noopener noreferrer" aria-label="Ampliar foto: Equipe em visita ao SENAI Panambi (nova aba)">
+                    <img src="images/EquipeQualifica/Visita Senai panambi.jpg" alt="Equipe em visita ao SENAI Panambi" loading="lazy">
+                  </a>
+                  <figcaption>Equipe em visita ao SENAI Panambi</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <div class="qualifica-cta">
+            <div>
+              <h3>Inscreva-se gratuitamente</h3>
+              <p>Acesse pelo Instagram <strong>@qualificaijui</strong> — vagas limitadas!</p>
+            </div>
+            <a class="button white" href="https://www.instagram.com/qualifica_ijui/" target="_blank" rel="noopener noreferrer">Inscreva-se agora →</a>
+          </div>
+          <div class="qualifica-institutional" role="group" aria-label="Secretarias municipais e Prefeitura de Ijuí">
+            <div class="institutional-logos">
+              <span class="institutional-logo institutional-smds">
+                <img src="images/SmdsLogo.png" alt="SMDS — Secretaria Municipal de Desenvolvimento Social" width="1254" height="1254">
+              </span>
+              <span class="institutional-logo institutional-semdec">
+                <img src="images/SemdecLogo.png" alt="SEMDEC — Secretaria Municipal de Desenvolvimento Econômico" width="1254" height="1254">
+              </span>
+              <span class="institutional-logo institutional-prefeitura">
+                <img src="images/IjuiPrefeituraLogo.png" alt="Prefeitura de Ijuí — Trabalhando juntos" width="1254" height="1254">
+              </span>
+            </div>
+          </div>
         </div>
       </section>
       <section class="section" id="microcredito">
