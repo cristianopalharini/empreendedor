@@ -58,7 +58,7 @@ const services = {
   vigilancia: [
     ['🌿','Licenciamento Ambiental','Acesse o portal ambiental.','http://meioambiente.govbr.com.br:3050/rcl5/indexme.aspx?1680'],
     ['🏥','Alvará Sanitário','Solicite o alvará sanitário.','https://ijui.1doc.com.br/b.php?pg=wp/wp&itd=5&is=1508'],
-    ['🗺️','Mapa de Zoneamento','Consulte as zonas urbanas de Ijuí no mapa.','#zoneamento']
+    ['🗺️','Plano Diretor e Zoneamento','Consulte a lei, a tabela de atividades e o mapa de zoneamento.','#zoneamento']
   ]
 };
 
@@ -114,3 +114,40 @@ menuToggle.addEventListener('click', () => { const open = nav.classList.toggle('
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { nav.classList.remove('open'); menuToggle.setAttribute('aria-expanded','false'); menuToggle.setAttribute('aria-label','Abrir menu'); }));
 const topLink = document.querySelector('.back-top');
 window.addEventListener('scroll', () => topLink.classList.toggle('visible', window.scrollY > 450), { passive:true });
+
+const officeTimeFormatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'America/Sao_Paulo',
+  weekday: 'short',
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23'
+});
+
+function isOfficeOpen(date = new Date()) {
+  const parts = Object.fromEntries(officeTimeFormatter.formatToParts(date).map(part => [part.type, part.value]));
+  const minutes = Number(parts.hour) * 60 + Number(parts.minute);
+  const weekday = !['Sat', 'Sun'].includes(parts.weekday);
+  return weekday && ((minutes >= 510 && minutes < 690) || (minutes >= 810 && minutes < 1020));
+}
+
+const officeHours = document.querySelector('.hours');
+const officeStatus = document.querySelector('.hours-status');
+let officeHoursTimer;
+
+function updateOfficeHours() {
+  const open = isOfficeOpen();
+  const status = open ? 'Em atendimento.' : 'Fora do horário de atendimento.';
+  officeHours.classList.toggle('is-open', open);
+  officeHours.classList.toggle('is-closed', !open);
+  officeHours.title = status;
+  if (officeStatus.textContent !== status) officeStatus.textContent = status;
+  // Atualiza na próxima virada de minuto e ao retornar à página.
+  clearTimeout(officeHoursTimer);
+  officeHoursTimer = setTimeout(updateOfficeHours, 60000 - Date.now() % 60000);
+}
+
+updateOfficeHours();
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) updateOfficeHours();
+});
+window.addEventListener('focus', updateOfficeHours);

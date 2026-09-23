@@ -10,11 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="zoneamento.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
     <script src="site.js" defer></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
-    <script src="zoneamento-data.js" defer></script>
-    <script src="zoneamento.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -38,7 +34,7 @@
         <div class="container hero-grid">
           <div>
             <p class="hours">
-              <span>●</span> Atendimento: Seg a Sex — 8h30 às 11h30 e 13h30 às 17h
+              <span aria-hidden="true">●</span> Atendimento: Seg a Sex — 8h30 às 11h30 e 13h30 às 17h<span class="hours-status" aria-live="polite"></span>
             </p>
             <h1>
               Sala do<br><em>Empreendedor</em><small>Prefeitura de Ijuí</small>
@@ -105,54 +101,33 @@
           <div class="section-heading">
             <span class="eyebrow">Planeje seu negócio</span>
             <h2>
-              Mapa de zoneamento de Ijuí
+              Plano Diretor e zoneamento de Ijuí
             </h2>
             <p>
-              Pesquise uma atividade específica do Anexo 3 para destacar areas onde sua empresa pode atuar. A indicação não substitui a análise do município.
+              Entenda como consultar as regras de uso dos imóveis e as atividades previstas para cada região do município.
             </p>
           </div>
-          <form class="zone-filter" id="zone-filter">
-            <label for="business-type">Atividade conforme o Anexo 3</label>
-            <div class="zone-filter-row">
-              <input id="business-type" name="business-type" type="search" list="business-examples" placeholder="Ex.: clínica médica, contabilidade, hipermercado" autocomplete="off" required><button class="button orange" type="submit">Buscar áreas</button><button class="button map-secondary" type="button" id="clear-zone-filter">Limpar</button>
-            </div>
-            <datalist id="business-examples">
-              <option value="Acupuntura">
-              <option value="Advocacia">
-              <option value="Clínica médica">
-              <option value="Clínica odontológica">
-              <option value="Consultoria e assessoria">
-              <option value="Contabilidade">
-              <option value="Açougue">
-              <option value="Farmácia de manipulação">
-              <option value="Hipermercado">
-              <option value="Armazéns e depósitos em geral">
-              <option value="Indústria de baixo potencial poluidor e área mínima">
-              <option value="Indústria de baixo potencial poluidor e área média">
-              <option value="Indústria de potencial baixo ou médio e área média ou grande">
-              <option value="Indústria de potencial médio ou alto e área média ou grande">
-            </datalist>
-            <p class="zone-filter-status" id="zone-filter-status" role="status" aria-live="polite">
-              Escolha uma atividade da lista para ver as zonas de referência do Anexo 3.
+          <div class="zoning-guide">
+            <h3>O que é a lei e para que serve?</h3>
+            <p>
+              A Lei Complementar nº 6.929/2020 institui o Plano Diretor de Ijuí, que orienta o desenvolvimento do município e estabelece regras para o uso e a ocupação dos imóveis. O zoneamento divide o território em áreas com regras próprias, incluindo as atividades que podem ser exercidas em cada local.
             </p>
-          </form>
-          <div class="zone-legend" aria-label="Legenda do mapa">
-            <span><i class="zone-key residential"></i> Residencial</span>
-            <span><i class="zone-key commercial"></i> Comercial ou mista</span>
-            <span><i class="zone-key industrial"></i> Industrial</span><small>Arraste para navegar. Passe o cursor ou toque em uma área para ver a zona.</small>
-          </div>
-          <div class="map-frame">
-            <div id="zoning-map" role="img" aria-label="Mapa interativo de zoneamento de Ijuí">
-              Carregando mapa de zoneamento…
-            </div>
+            <p>
+              Essa consulta ajuda a avaliar a localização do negócio antes de alugar, comprar ou adaptar um imóvel.
+            </p>
+            <h3>Como encontrar as informações?</h3>
+            <ol>
+              <li><strong>Consulte a lei:</strong> no botão da Lei Complementar, acesse o texto e procure as regras de uso e ocupação do solo. Utilize a busca da página para localizar palavras como “zoneamento” e “atividades”.</li>
+              <li><strong>Identifique a zona do imóvel:</strong> no botão da tabela e do mapa, abra o Mapa 14, localize o imóvel e consulte a legenda para identificar a sigla da zona.</li>
+              <li><strong>Verifique a atividade:</strong> no Anexo 3, procure a atividade pretendida e confira a coluna correspondente à zona do imóvel, observando a legenda e as notas da tabela.</li>
+            </ol>
           </div>
           <div class="map-actions">
-            <a class="button orange" href="https://www.google.com/maps/d/viewer?mid=1ki7e4q0CeL2bRKgsw1jL5NkKJQgFFTo" target="_blank" rel="noopener noreferrer">Abrir mapa completo ↗</a>
-            <a class="button map-secondary" href="https://www.ijui.rs.gov.br/pagina/40" target="_blank" rel="noopener noreferrer">Página oficial do zoneamento ↗</a>
-            <a class="button map-secondary" href="anexos-zoneamento.pdf" target="_blank" rel="noopener noreferrer">Tabela de atividades (Anexo 3) ↗</a>
+            <a class="button map-secondary" href="https://leis.org/prefeitura/rs/ijui/lei/lei-complementar/2020/6929/lei-complementar-n-6929-2020-institui-o-plano-diretor-participativo-do-municipio-de-ijui-consolida-a-legislacao-urbanistica-revoga-legislacoes-que-menciona-e-da-outras" target="_blank" rel="noopener noreferrer">Consultar Lei Complementar nº 6.929/2020 ↗</a>
+            <a class="button map-secondary" href="https://leis.org/prefeitura/rs/ijui/lei/lei-complementar/2020/6929/lei-complementar-n-6929-2020-institui-o-plano-diretor-participativo-do-municipio-de-ijui-consolida-a-legislacao-urbanistica-revoga-legislacoes-que-menciona-e-da-outras#:~:text=Anexos%20Consolidados" target="_blank" rel="noopener noreferrer">Tabela de atividades (Anexo 3) e mapa de zoneamento (Mapa 14) ↗</a>
           </div>
           <p class="map-note">
-            Os polígonos foram extraídos do mapa divulgado pela Prefeitura, com dados consolidados até dezembro de 2022. A indicação por atividade é preliminar e não comprova que um imóvel pode receber o negócio. Para confirmar o zoneamento e as regras aplicáveis ao imóvel, consulte a Secretaria Municipal de Planejamento: <a href="tel:+555533318200">(55) 3331-8200</a>.
+            Para confirmar as regras aplicáveis ao imóvel e à atividade, consulte a Secretaria Municipal de Planejamento: <a href="tel:+555533318200">(55) 3331-8200</a>. A consulta aos documentos orienta o planejamento e não substitui a análise e as autorizações do município.
           </p>
         </div>
       </section>
