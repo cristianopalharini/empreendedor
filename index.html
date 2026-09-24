@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Serviços, orientações e microcrédito para empreendedores de Ijuí.">
     <title>Sala do Empreendedor — Prefeitura de Ijuí</title>
-    <link rel="icon" type="image/png" href="./images/favicon-ijui.png">
+    <link rel="icon" type="image/svg+xml" href="./images/favicon-ijui-simbolo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,16 +18,16 @@
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/PMILogo202103.png" alt=""></span>
+        <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/logoIjui-transparente.png" alt="" width="1254" height="1254"></span>
         <span><strong>Sala do Empreendedor</strong><small>Prefeitura de Ijuí — SEMDEC</small></span></a>
         <nav id="main-nav" class="nav" aria-label="Navegação principal">
           <a href="#inicio">Início</a>
           <a href="#servicos">Serviços</a>
-          <a href="#microcredito">Microcrédito</a>
           <a href="#zoneamento">Zoneamento</a>
+          <a href="#qualifica">Qualifica+</a>
+          <a href="#microcredito">Microcrédito</a>
           <a href="#aprender">Aprender</a>
           <a href="#sobre">Sobre</a>
-          <a href="#contato">Contato</a>
         </nav>
         <a class="button orange header-cta" href="#contato">Fale Conosco</a><button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="main-nav" aria-expanded="false">☰</button>
       </div>
@@ -35,12 +35,13 @@
     <main>
       <section class="hero" id="inicio">
         <div class="container hero-grid">
-          <div>
+          <div class="hero-intro">
             <p class="hours">
               <span aria-hidden="true">●</span> Atendimento: Seg a Sex — 8h30 às 11h30 e 13h30 às 17h<span class="hours-status" aria-live="polite"></span>
             </p>
-            <h1>
-              Sala do<br><em>Empreendedor</em><small>Prefeitura de Ijuí</small>
+            <h1 class="hero-brand">
+              <img class="hero-logo" src="images/logo-sala-empreendedor-site.svg" alt="Sala do Empreendedor" width="1600" height="456" fetchpriority="high">
+              <small>Prefeitura de Ijuí</small>
             </h1>
             <p class="hero-description">
               Orientação gratuita, microcrédito, abertura de empresas, alvarás e muito mais — tudo num só lugar para o empreendedor ijuiense.
@@ -54,7 +55,7 @@
             <a href="#servicos"><span>📱</span><strong>Serviços Digitais</strong><small>Resolva com agilidade</small></a>
             <a href="#sobre"><span>🤝</span><strong>Orientações</strong><small>Suporte especializado</small></a>
             <a href="#microcredito"><span>💰</span><strong>Microcrédito</strong><small>Para o seu negócio</small></a>
-            <a href="#servicos" data-category="licitacoes"><span>🏛️</span><strong>Licitações</strong><small>Seja fornecedor da Prefeitura</small></a>
+            <a href="#qualifica"><span aria-hidden="true"><img class="quick-logo" src="images/logo-qualifica-atalho.png" alt="" width="44" height="44"></span><strong>Qualifica+ Ijuí</strong><small>Cursos gratuitos de capacitação</small></a>
           </div>
         </div>
         <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 48V16C240 0 480 48 720 32C960 16 1200 0 1440 16V48H0Z"/></svg>
@@ -138,10 +139,10 @@
         <div class="container">
           <div class="qualifica-heading">
             <div>
-              <h2 id="qualifica-title">Qualifica<span>+</span> Ijuí</h2>
+              <h2 id="qualifica-title"><img class="qualifica-title-icon" src="images/logo-qualifica-atalho.png" alt="" width="64" height="64">Qualifica<span>+</span> Ijuí</h2>
               <p>Programa da Prefeitura de Ijuí com cursos de capacitação profissional <strong>100% gratuitos</strong>, em parceria com SENAC e SENAI. O primeiro programa gaúcho do tipo — e finalista nacional de inovação municipal.</p>
             </div>
-            <a class="button qualifica-instagram" href="https://www.instagram.com/qualifica_ijui/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📸</span> @qualificaijui</a>
+            <a class="button qualifica-instagram" href="https://www.instagram.com/qualifica_ijui/" target="_blank" rel="noopener noreferrer"><img class="qualifica-instagram-logo" src="images/logo-instagram-transparente.png" alt="Instagram" width="28" height="28"> @qualificaijui</a>
           </div>
           <dl class="qualifica-stats">
             <div><dt>pessoas qualificadas</dt><dd>+1.600</dd></div>
@@ -281,16 +282,21 @@
             </div>
             <a class="button white" href="https://www.instagram.com/qualifica_ijui/" target="_blank" rel="noopener noreferrer">Inscreva-se agora →</a>
           </div>
+          <div class="qualifica-partners">
+            <span class="qualifica-badge">Em breve</span>
+            <h3>Seja parceiro do Qualifica+ Ijuí</h3>
+            <p>Em breve, estará disponível um espaço para quem deseja ser parceiro e oferecer cursos gratuitos pelo Qualifica+ Ijuí. Faça parte dessa iniciativa e ajude a ampliar as oportunidades de capacitação no município.</p>
+          </div>
           <div class="qualifica-institutional" role="group" aria-label="Secretarias municipais e Prefeitura de Ijuí">
             <div class="institutional-logos">
               <span class="institutional-logo institutional-smds">
-                <img src="images/SmdsLogo.png" alt="SMDS — Secretaria Municipal de Desenvolvimento Social" width="1254" height="1254">
+                <img src="images/logoSmds-transparente.png" alt="SMDS — Secretaria Municipal de Desenvolvimento Social" width="1309" height="1202">
               </span>
               <span class="institutional-logo institutional-semdec">
-                <img src="images/SemdecLogo.png" alt="SEMDEC — Secretaria Municipal de Desenvolvimento Econômico" width="1254" height="1254">
+                <img src="images/logoSemdec-transparente.png" alt="SEMDEC — Secretaria Municipal de Desenvolvimento Econômico" width="1274" height="1234">
               </span>
               <span class="institutional-logo institutional-prefeitura">
-                <img src="images/IjuiPrefeituraLogo.png" alt="Prefeitura de Ijuí — Trabalhando juntos" width="1254" height="1254">
+                <img src="images/logoIjui-transparente.png" alt="Município de Ijuí — Capital Nacional das Etnias" width="1254" height="1254">
               </span>
             </div>
           </div>
@@ -560,7 +566,7 @@
     </main>
     <footer>
       <div class="container footer-wrap">
-        <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/PMILogo202103.png" alt=""></span>
+        <a class="brand" href="#inicio"><span class="brand-mark"><img src="images/logoIjui-transparente.png" alt="" width="1254" height="1254"></span>
         <span><strong>Sala do Empreendedor — Ijuí</strong><small>Município de Ijuí — Poder Executivo / SEMDEC</small></span></a>
         <nav aria-label="Navegação do rodapé">
           <a href="#inicio">Início</a>

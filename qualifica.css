@@ -7,9 +7,11 @@
 .qualifica-badge{display:inline-block;border:1px solid #22a09059;border-radius:30px;background:#22a09033;color:#72e0d0;padding:6px 12px;font-size:12px;font-weight:700}
 .qualifica-heading h2{color:#fff;font-size:clamp(2rem,4vw,3rem);margin:16px 0 12px}
 .qualifica-heading h2 span{color:#22a090}
+.qualifica-title-icon{display:inline-block;width:1.4em;height:1.4em;margin-right:8px;vertical-align:middle;object-fit:contain}
 .qualifica-heading p{max-width:550px;color:#a8c8e8;margin:0}
 .qualifica-section strong{color:#fff}
 .qualifica-instagram{flex-shrink:0;gap:8px;border:1px solid #ffffff40;color:#a8c8e8}
+.qualifica-instagram-logo{display:block;flex:none;width:28px;height:28px;object-fit:contain}
 .qualifica-instagram:hover{border-color:#22a09099;color:#fff;background:#ffffff0a}
 .qualifica-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 20px}
 .qualifica-stats>div{display:flex;flex-direction:column;background:#ffffff1a;border:1px solid #ffffff26;border-radius:16px;padding:20px}
@@ -22,7 +24,7 @@
 .qualifica-highlight p{margin:0;color:#b8d6b0;font-size:14px}
 .qualifica-first{flex:none;margin-left:auto;text-align:right;color:#f0c060;font:800 42px/1 Outfit,Arial,sans-serif}
 .qualifica-first small{display:block;margin-top:8px;color:#b8d6b0;font:600 10px Inter,Arial,sans-serif;text-transform:uppercase;letter-spacing:2px}
-.qualifica-benefits{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 38px;padding:0}
+.qualifica-benefits{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;list-style:none;margin:0 0 38px;padding:0;text-align:center}
 .qualifica-benefits li{border:1px solid #22a0904d;border-radius:30px;background:#22a09026;color:#72e0d0;padding:6px 12px;font-size:12px;font-weight:600}
 .qualifica-benefits li::before{content:"✓";margin-right:6px}
 .qualifica-gallery{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;margin-bottom:40px}
@@ -74,7 +76,16 @@
 .qualifica-cta h3{font-size:22px;margin:0 0 4px}
 .qualifica-cta p{color:#ffe1c8;font-size:14px;margin:0}
 .qualifica-cta .button{flex-shrink:0}
+.qualifica-partners{margin-top:20px;padding:clamp(22px,4vw,30px);border:1px solid #22a09059;border-radius:16px;background:#22a0901a}
+.qualifica-partners h3{margin:14px 0 8px;color:#fff;font-size:22px}
+.qualifica-partners p{margin:0;max-width:760px;color:#a8c8e8;font-size:14px}
 .qualifica-institutional{margin-top:40px;padding-top:30px;border-top:1px solid #ffffff26}
+/* A camada branca cobre somente as letras; os simbolos mantem suas cores. */
+.qualifica-institutional .institutional-logo{position:relative}
+.qualifica-institutional .institutional-logo::after{content:"";position:absolute;inset:0;background:var(--logo-image) center/100% 100% no-repeat;filter:brightness(0) invert(1);clip-path:inset(var(--logo-text-start) 0 0);pointer-events:none}
+.qualifica-institutional .institutional-smds{--logo-image:url("images/logoSmds-transparente.png");--logo-text-start:60%}
+.qualifica-institutional .institutional-semdec{--logo-image:url("images/logoSemdec-transparente.png");--logo-text-start:58%}
+.qualifica-institutional .institutional-prefeitura{--logo-image:url("images/logoIjui-transparente.png");--logo-text-start:74%}
 @media(max-width:900px){.qualifica-gallery{grid-template-columns:1fr}.qualifica-team-heading{min-height:0}.qualifica-team-photos{min-height:320px}}
 @media(max-width:760px){.qualifica-heading{flex-direction:column;align-items:flex-start}.qualifica-first{display:none}.qualifica-cta{flex-direction:column;align-items:flex-start}}
 @media(max-width:600px){.qualifica-carousel-viewport{height:480px}.qualifica-completed-course.has-photo{grid-template-columns:1fr;grid-template-rows:auto 1fr}.qualifica-completed-content{padding:24px}.qualifica-carousel-heading p{font-size:13px}}
