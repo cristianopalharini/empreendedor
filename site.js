@@ -52,7 +52,7 @@ const services = {
     ['💳','Parcelamento de Tributos','Regularize débitos municipais.','https://www.ijui.rs.gov.br/pagina/25/servicos-digitais/sub-pagina/138/'],
     ['⚖️','Tributos Ajuizados','Consulte serviços de débitos ajuizados.','https://ijui.1doc.com.br/b.php?pg=wp/wp&itd=5&is=1088'],
     ['🔄','Reemissão de Guia','Acesse orientações da Prefeitura.','https://www.ijui.rs.gov.br/pagina/19/manual-de-orientacao-dos-procedimentos-administrativos/sub-pagina/72/'],
-    ['📱','Aplicativo CidadeMob','Acesse serviços municipais pelo celular.','https://www.ijui.rs.gov.br/pagina/18/cidademob'],
+    ['📱','Aplicativo CidadeMob','Acesse serviços municipais pelo celular.','https://play.google.com/store/apps/details?id=br.com.cidademob&hl=pt_BR','https://apps.apple.com/br/app/cidademob/id1154262726'],
     ['💻','Declaração Eletrônica de ISS','Faça a declaração de serviços.','http://ijui-portais.govcloud.com.br:8080/deiss/servlet/br.com.cetil.ar.gips.hprincipal?XHYvHvw0LR7ksvk2RI32+A==']
   ],
   vigilancia: [
