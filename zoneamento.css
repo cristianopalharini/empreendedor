@@ -9,8 +9,11 @@
 .zoning-guide strong{color:#0d2b55}
 .map-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
 .map-actions .button{text-align:center}
-.map-secondary{color:#0d2b55;border:1px solid #b7c8db;background:#fff}
-.map-secondary:hover{background:#f4f7fb}
+.container-buttons {display: flex;flex-wrap: wrap;gap: 16px;justify-content: center;align-items: stretch;padding: 20px 0;}
+.map-secondary {color: #0d2b55;border: 1px solid #b7c8db;background: #fff;flex: 1;min-width: 280px;max-width: 380px;padding: 12px 20px;border-radius: 8px;text-align: center;text-decoration: none;display: inline-flex;justify-content: center;align-items: center;}
+.map-secondary:hover {background: #f4f7fb;}
+.map-terciary {color: #fff;border: 1px solid #b7c8db;background: #c85c1a;flex: 1;min-width: 280px;max-width: 380px;padding: 12px 20px;border-radius: 8px;text-align: center;text-decoration: none;display: inline-flex;justify-content: center;align-items: center;}
+.map-terciary:hover {background: #c97b4b;}
 .map-note{max-width:900px;margin:19px auto 0;color:#52627a;font-size:13px;line-height:1.65}
 .map-note a{color:#0d2b55;text-decoration:underline;font-weight:700}
 @media(max-width:1000px){.menu-toggle{display:block;margin-left:auto}.nav{display:none;position:absolute;top:68px;left:0;right:0;background:#0d2b55;padding:12px 20px 20px;box-shadow:0 12px 20px #0002}.nav.open{display:grid}.nav a{font-size:14px;padding:11px}}
